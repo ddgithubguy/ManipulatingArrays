@@ -1,4 +1,8 @@
-const topics = [
+var _ = require('lodash');
+
+console.clear()
+
+const origTopics = [
     [
         {
             "COURSE_TOPIC_ID": "195",
@@ -23,13 +27,19 @@ const topics = [
             "XS_COURSE_TOPIC_NM": "Communications"
         }
     ]
-]
+];
 
-let newArray = [];
+const topics = [];
 
-topics.forEach(topic => {
-  newArray.push(...topic)
+origTopics.forEach(topic => {
+    topics.push(...topic);
 })
 
-console.log(newArray)
+console.log("\n\ntopics:",topics);
 
+const uniqueTopics = _.uniq(topics, 'COURSE_TOPIC_ID')
+console.log("\n\nuniqueTopics:",uniqueTopics);
+
+const sortedTopics = _.sortBy(uniqueTopics, ['XS_COURSE_TOPIC_NM']);
+
+console.log("\n\nsortedTopics:",sortedTopics);
